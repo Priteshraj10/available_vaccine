@@ -1,6 +1,11 @@
 import requests
 from datetime import datetime, timedelta
 
+from twilio.rest import Client
+account_sid = "ACf226c4466d7d222efafc7ada099ee0dd"
+auth_token = '91b48b9e3f23e399483b47f9384d78cc'
+client = Client(account_sid, auth_token)
+
 import time
 import json
 
@@ -64,11 +69,23 @@ while True:
 
             else:
                 print("No Response!")
+                message = client.messages.create(body="No Response!",
+                                                 from_="+19549510503",
+                                                 to="+91 7677911485")
+                print(message.sid)
 
         if (counter == 0):
             print("No Vaccination slot avaliable!")
+            message = client.messages.create(body="No Vaccination slot avaliable!",
+                                             from_="+19549510503",
+                                             to="+91 7677911485")
+            print(message.sid)
         else:
             print("Search Completed!")
+            message = client.messages.create(body="Search Completed",
+                                             from_="+19549510503",
+                                             to="+91 7677911485")
+            print(message.sid)
 
         dt = datetime.now() + timedelta(minutes=3)
 
