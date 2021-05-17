@@ -1,4 +1,4 @@
-name: scraper-san-juan-gobierno
+name: available_vaccine
 
 on:
   schedule:
